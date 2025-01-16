@@ -17,7 +17,7 @@ const BuyNowModal = ({ addressInfo, setAddressInfo, buyNowFunction }) => {
                 onClick={handleOpen}
                 className="w-full px-4 py-3 text-center text-gray-100 bg-black border border-transparent    rounded-xl"
             >
-                Buy now
+                Book now
             </Button>
             <Dialog open={open} handler={handleOpen} className=" bg-gray-100">
                 <DialogBody className="">
@@ -98,7 +98,7 @@ const BuyNowModal = ({ addressInfo, setAddressInfo, buyNowFunction }) => {
                             }}
                             className="w-full px-4 py-3 text-center text-gray-100 bg-black border border-transparent dark:border-gray-700 rounded-lg"
                         >
-                            Buy now
+                            Book now
                         </Button>
                     </div>
 

@@ -31,10 +31,10 @@ const ProductDetail = () => {
         <div>
             <div className="py-5 flex justify-between items-center">
                
-                <h1 className=" text-xl text-black font-bold">All Product</h1>
+                <h1 className=" text-xl text-black font-bold">All Available Rooms</h1>
             
                 <Link to={'/addproduct'}>
-                    <button className="px-5 py-2 bg-black text-white border  rounded-lg">Add Product</button>
+                    <button className="px-5 py-2 bg-black text-white border  rounded-lg">Add Room</button>
                 </Link>
             </div>
 

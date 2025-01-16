@@ -9,26 +9,30 @@ import toast from "react-hot-toast";
 
 const CategoryPage = () => {
     const { categoryname } = useParams();
+    console.log(categoryname)
     const context = useContext(myContext);
     const { getAllProduct, loading } = context;
-
+    const decodedCategoryName = decodeURIComponent(categoryname);
+    console.log("m",decodedCategoryName)
     const navigate = useNavigate();
 
-    const filterProduct = getAllProduct.filter((obj) => obj.category.includes(categoryname))
+    
 
-
+    const filterProduct = getAllProduct.filter((obj) =>
+        obj?.category?.toLowerCase()?.includes(decodedCategoryName?.toLowerCase())
+    );
     const cartItems = useSelector((state) => state.cart);
     const dispatch = useDispatch();
 
     const addCart = (item) => {
         // console.log(item)
         dispatch(addToCart(item));
-        toast.success("Add to cart")
+        toast.success("Added to bookings")
     }
 
     const deleteCart = (item) => {
         dispatch(deleteFromCart(item));
-        toast.success("Delete cart")
+        toast.success("Deleted from bookings")
     }
 
     // console.log(cartItems)
@@ -73,7 +77,7 @@ const CategoryPage = () => {
                                         />
                                         <div className="p-6">
                                             <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
-                                            E-Commerce Firebase
+                                            Metro Stay
                                             </h2>
                                             <h1 className="title-font text-lg font-medium text-gray-900 mb-3">
                                                 {title.substring(0, 25)}
@@ -90,7 +94,7 @@ const CategoryPage = () => {
                                                 <button
                                                     onClick={() => deleteCart(item)}
                                                     className=" bg-red-700  w-full text-white py-[4px] rounded-lg font-bold">
-                                                    Delete To Cart
+                                                    Delete From Bookings
                                                 </button>
 
                                                 : 
@@ -98,7 +102,7 @@ const CategoryPage = () => {
                                                 <button
                                                     onClick={() => addCart(item)}
                                                     className=" bg-black w-full text-white py-[4px] rounded-lg font-bold">
-                                                    Add To Cart
+                                                    Add To Bookings
                                                 </button>
                                             }
                                             </div>

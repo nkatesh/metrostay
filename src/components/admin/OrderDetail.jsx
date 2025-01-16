@@ -11,7 +11,7 @@ const OrderDetail = () => {
             <div>
                 <div className="py-5">
                 
-                    <h1 className=" text-xl text-black font-bold">All Order</h1>
+                    <h1 className=" text-xl text-black font-bold">All Bookings</h1>
                 </div>
 
                 
@@ -50,7 +50,7 @@ className="h-12 px-6 text-md text-slate-700 bg-slate-100 font-bold">
 
                                 <th scope="col"
                                     className="h-12 px-6 text-md text-slate-700 bg-slate-100 font-bold">
-                                    Quantity
+                                    Total Rooms
                                 </th>
 
                                 <th scope="col"

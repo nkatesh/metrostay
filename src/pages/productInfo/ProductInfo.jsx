@@ -40,12 +40,12 @@ const ProductInfo = () => {
     const addCart = (item) => {
        
         dispatch(addToCart(item));
-        toast.success("Add to cart")
+        toast.success("Add to Bookings")
     }
 
     const deleteCart = (item) => {
         dispatch(deleteFromCart(item));
-        toast.success("Delete cart")
+        toast.success("Delete from Bookings")
     }
 
     // console.log(cartItems)
@@ -157,6 +157,12 @@ const ProductInfo = () => {
                                                 <span>₹ {product?.price}</span>
                                             </p>
                                         </div>
+                                        <div class="mb-6"><h2 class="mb-2 text-lg font-bold text-gray-700 dark:text-gray-400">Category :
+                                            <span class="text-blue-gray-700 text-[16px] px-2">{product.category}</span></h2>
+                                            </div>
+                                            <div class="mb-6"><h2 class="mb-2 text-lg font-bold text-gray-700 dark:text-gray-400">Location :
+                                                <span class="text-blue-gray-700 text-[16px] px-2 capitalize">{product.location}</span></h2>
+                                                </div>
                                         <div className="mb-6">
                                             <h2 className="mb-2 text-lg font-bold text-gray-700 dark:text-gray-400">
                                                 Description :
@@ -172,14 +178,14 @@ const ProductInfo = () => {
                                                     onClick={() => deleteCart(product)}
                                                     className="w-full px-4 py-3 text-center text-white bg-red-500 border border--600   rounded-xl"
                                                 >
-                                                    Delete to cart
+                                                    Delete from bookings
                                                 </button>
                                                 :
                                                 <button
                                                     onClick={() => addCart(product)}
                                                     className="w-full px-4 py-3 text-center text-white bg-black    rounded-xl"
                                                 >
-                                                    Add to cart
+                                                    Add to bookings
                                                 </button>
                                             }
                                         </div>

@@ -4,13 +4,14 @@ import { getFirestore } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
 
 // Your web app's Firebase configuration
+
 const firebaseConfig = {
-  apiKey: "AIzaSyDOG7PS5KF3m5ziIS28bw2kPNTA47kcpcQ",
-  authDomain: "ec-admin-user.firebaseapp.com",
-  projectId: "ec-admin-user",
-  storageBucket: "ec-admin-user.appspot.com",
-  messagingSenderId: "368217932154",
-  appId: "1:368217932154:web:a33ce086e7b7d0242b56c3"
+  apiKey: "AIzaSyALwFY2O6JioeYjiMUedwnyf76_6FSIt8o",
+  authDomain: "metrostay-84734.firebaseapp.com",
+  projectId: "metrostay-84734",
+  storageBucket: "metrostay-84734.firebasestorage.app",
+  messagingSenderId: "250594853995",
+  appId: "1:250594853995:web:72ac9a667f417339239d2e"
 };
 
 

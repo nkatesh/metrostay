@@ -8,28 +8,28 @@ import Loader from "../../components/loader/Loader";
 
 const categoryList = [
     {
-        name: 'fashion'
+        name: 'Cozy Single'
     },
     {
-        name: 'shirt'
+        name: 'Comfort Twin'
     },
     {
-        name: 'jacket'
+        name: 'Single Comfort A/C'
     },
     {
-        name: 'mobile'
+        name: 'Twin Comfort A/C'
     },
     {
-        name: 'laptop'
+        name: 'Premium Single Suite'
     },
     {
-        name: 'shoes'
+        name: 'Deluxe Twin Sharing'
     },
     {
-        name: 'home'
+        name: 'Studio Haven'
     },
     {
-        name: 'books'
+        name: 'Budget Friendly Single'
     }
 ]
 
@@ -48,6 +48,7 @@ const AddProductPage = () => {
         category: "",
         description: "",
         quantity : 1,
+        location:"",
         time: Timestamp.now(),
         date: new Date().toLocaleString(
             "en-US",
@@ -70,7 +71,7 @@ const AddProductPage = () => {
         try {
             const productRef = collection(fireDB, 'products');
             await addDoc(productRef, product)
-            toast.success("Add product successfully");
+            toast.success("Room Details Added Successfully");
             navigate('/admin-dashboard')
             setLoading(false)
         } catch (error) {
@@ -90,7 +91,7 @@ const AddProductPage = () => {
                     {/* Top Heading  */}
                     <div className="mb-5">
                         <h2 className='text-center text-2xl font-bold text-black '>
-                            Add Product
+                            Add Room Details
                         </h2>
                     </div>
 
@@ -106,7 +107,7 @@ const AddProductPage = () => {
                                     title: e.target.value
                                 })
                             }}
-                            placeholder='Product Title'
+                            placeholder='Hotel/PG Title'
                             className='bg-gray-50 border text-black border-gray-400 px-2 py-2 w-96 rounded-md outline-none placeholder-gray-600'
                         />
                     </div>
@@ -123,7 +124,7 @@ const AddProductPage = () => {
                                     price: e.target.value
                                 })
                             }}
-                            placeholder='Product Price'
+                            placeholder='Room Price'
                             className='bg-gray-50 border text-black border-gray-400 px-2 py-2 w-96 rounded-md outline-none placeholder-gray-600'
                             
                         />
@@ -140,7 +141,7 @@ const AddProductPage = () => {
                                     productImageUrl: e.target.value
                                 })
                             }}
-                            placeholder='Product Image Url'
+                            placeholder='Room Image Url'
                             className='bg-gray-50 border text-black border-gray-400 px-2 py-2 w-96 rounded-md outline-none placeholder-gray-600'
 
                         />
@@ -158,7 +159,7 @@ const AddProductPage = () => {
                             }}
                        className='bg-gray-50 border text-black border-gray-400 px-2 py-2 w-96 rounded-md outline-none placeholder-gray-500'
 >
-                            <option disabled>Select Product Category</option>
+                            <option disabled value=''>Select Room Category</option>
                             {categoryList.map((value, index) => {
                                 const { name } = value
                                 return (
@@ -166,6 +167,21 @@ const AddProductPage = () => {
                                 )
                             })}
                         </select>
+                    </div>
+                    <div className="mb-3">
+                        <input
+                            type="text"
+                            name="location"
+                            value={product.location}
+                            onChange={(e) => {
+                                setProduct({
+                                    ...product,
+                                    location: e.target.value
+                                })
+                            }}
+                            placeholder='Enter Location'
+                            className='bg-gray-50 border text-black border-gray-400 px-2 py-2 w-96 rounded-md outline-none placeholder-gray-600'
+                        />
                     </div>
 
                     <div className="mb-3">
@@ -176,7 +192,7 @@ const AddProductPage = () => {
                                     ...product,
                                     description: e.target.value
                                 })
-                            }} name="description" placeholder="Product Description" rows="5" 
+                            }} name="description" placeholder="Room Description" rows="5" 
                             
                             className='bg-gray-50 border text-black border-gray-400 px-2 py-2 w-96 rounded-md outline-none placeholder-gray-600'
                             
@@ -193,7 +209,7 @@ const AddProductPage = () => {
                             type='button'
                             className='bg-black hover:bg-black hover:text-white w-full text-white text-center py-2 font-bold rounded-md '
                         >
-                            Add Product
+                            Add Details
                         </button>
                     </div>
                 </div>

@@ -57,7 +57,7 @@ const UserDashboard = () => {
                   
                     <div className="mx-auto my-4 max-w-6xl px-2 md:my-6 md:px-0">
                        
-                        <h2 className=" text-2xl lg:text-3xl font-bold">Order Details</h2>
+                        <h2 className=" text-2xl lg:text-3xl font-bold">Booking Details</h2>
 
                         <div className="flex justify-center relative top-10">
                         {loading && <Loader/>}
@@ -96,7 +96,7 @@ const UserDashboard = () => {
                                                             </div>
 
                                                             <div className="mb-4">
-                                                                <div className="text-sm font-semibold">Order Status</div>
+                                                                <div className="text-sm font-semibold">Booking Status</div>
                                                                 {status === 'pending' ?
                                                                     <div className="text-sm font-medium text-red-800 first-letter:uppercase">{status}</div>
                                                                     : <div className="text-sm font-medium text-green-800 first-letter:uppercase">{status}</div>
@@ -115,7 +115,7 @@ const UserDashboard = () => {
                                                                 <div className="flex flex-1 items-stretch">
                                                                     <div className="flex-shrink-0">
                                                                         <img
-                                                                            className="h-40 w-40 rounded-lg border border-gray-200 object-contain"
+                                                                            className="h-40 w-40 rounded-lg border border-gray-200 object-cover"
                                                                             src={productImageUrl}
                                                                             alt="img"
                                                                         />

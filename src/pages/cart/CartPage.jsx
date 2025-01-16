@@ -7,16 +7,17 @@ import { useEffect, useState } from "react";
 import { Timestamp, addDoc, collection } from "firebase/firestore";
 import { fireDB } from "../../firebase/FirebaseConfig";
 import BuyNowModal from "../../components/buyNowModal/BuyNowModal";
-import { Navigate } from "react-router";
+import { Navigate, useNavigate } from "react-router";
 
 const CartPage = () => {
     const cartItems = useSelector((state) => state.cart);
+    const [data,setData]= useState(false)
     console.log(cartItems)
     const dispatch = useDispatch();
-
+const nav = useNavigate()
     const deleteCart = (item) => {
         dispatch(deleteFromCart(item));
-        toast.success("Delete cart")
+        toast.success("Deleted from Bookings")
     }
 
     const handleIncrement = (id) => {
@@ -35,7 +36,7 @@ const CartPage = () => {
 
 
     useEffect(() => {
-        localStorage.setItem('cart', JSON.stringify(cartItems));
+        localStorage.getItem('cart', JSON.stringify(cartItems));
     }, [cartItems])
 
     const user = JSON.parse(localStorage.getItem('users'))
@@ -83,13 +84,19 @@ const CartPage = () => {
         try {
             const orderRef = collection(fireDB, 'order');
             addDoc(orderRef, orderInfo);
+        
+            localStorage.removeItem('cart')
             setAddressInfo({
                 name: "",
                 address: "",
                 pincode: "",
                 mobileNumber: "",
             })
-            toast.success("Order Placed Successfull")
+            toast.success("Room Booked Successfully")
+          
+            nav('/user-dashboard')
+            window.location.reload()
+        
         } catch (error) {
             console.log(error)
         }
@@ -103,19 +110,19 @@ const CartPage = () => {
                 <div className="container mx-auto px-4 max-w-7xl lg:px-0">
                 <div className="mx-auto max-w-2xl py-8 lg:max-w-7xl">
                     <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-                        Shopping Cart
+                        Bookings Cart
                     </h1>
                     <form className="mt-12 lg:grid lg:grid-cols-12 lg:items-start lg:gap-x-12 xl:gap-x-16">
                         <section aria-labelledby="cart-heading" className="rounded-lg bg-white lg:col-span-8">
                             <h2 id="cart-heading" className="sr-only">
-                                Items in your shopping cart
+                                Rooms in your bookings cart
                             </h2>
                             <ul role="list" className="divide-y divide-gray-200">
                                 {cartItems.length > 0 ?
 
                                     <>
                                         {cartItems.map((item, index) => {
-                                            const { id, title, price, productImageUrl, quantity, category } = item
+                                            const { id, title, price, productImageUrl, quantity, category,location } = item
                                             return (
                                                 <div key={index} className="">
                                                     <li className="flex py-6 sm:py-6 ">
@@ -127,27 +134,16 @@ const CartPage = () => {
                                                             />
                                                         </div>
 
-                                                        <div className="ml-4 flex flex-1 flex-col justify-between sm:ml-6">
-                                                            <div className="relative pr-9 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:pr-0">
+                                                        
+                                                        <div class="ml-4 flex flex-1 flex-col justify-between sm:ml-6 mt-2">
+                                                            <div class="relative pr-9 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:pr-0">
                                                                 <div>
-                                                                    <div className="flex justify-between">
-                                                                        <h3 className="text-sm">
-                                                                            <div className="font-semibold text-black">
-                                                                                {title}
-                                                                            </div>
-                                                                        </h3>
-                                                                    </div>
-                                                                    <div className="mt-1 flex text-sm">
-                                                                        <p className="text-sm text-gray-500">{category}</p>
-                                                                    </div>
-                                                                    <div className="mt-1 flex items-end">
-                                                                        <p className="text-sm font-medium text-gray-900">
-                                                                            ₹{price}
-                                                                        </p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                                    <div class="flex justify-between">
+                                                                        <h3 class="text-sm"><div class="font-semibold text-black">{title}</div></h3></div>
+                                                                        <div class="flex flex-col  mt-[-3px] text-sm"><p class="text-sm text-gray-500">{category}</p>
+                                                                        <p class="text-sm text-black text-opacity-60">{location}</p></div>
+                                                                        <div class="mt-1 flex items-end"><p class="text-sm font-medium text-gray-900">{price}</p>
+                                                                        </div></div></div></div>
                                                     </li>
                                                     <div className="mb-2 flex">
                                                         <div className="min-w-24 flex">
@@ -192,14 +188,14 @@ const CartPage = () => {
                             <div>
                                 <dl className=" space-y-1 px-2 py-4">
                                     <div className="flex items-center justify-between">
-                                        <dt className="text-sm text-gray-800">Price ({cartItemTotal} item)</dt>
+                                        <dt className="text-sm text-gray-800">Price ({cartItemTotal} room)</dt>
                                         <dd className="text-sm font-medium text-gray-900">₹ {cartTotal}</dd>
                                     </div>
                                     <div className="flex items-center justify-between py-4">
                                         <dt className="flex text-sm text-gray-800">
-                                            <span>Delivery Charges</span>
+                                            <span>Extra Charges</span>
                                         </dt>
-                                        <dd className="text-sm font-medium text-green-700">Free</dd>
+                                        <dd className="text-sm font-medium text-green-700">N/A</dd>
                                     </div>
                                     <div className="flex items-center justify-between border-y border-dashed py-4 ">
                                         <dt className="text-base font-medium text-gray-900">Total Amount</dt>
@@ -223,7 +219,7 @@ const CartPage = () => {
                 </div>
             </div>
                 
-                </>:<><p className=" text-xl text-gray-800 text-center py-24">Cart is empty</p></>
+                </>:<><p className=" text-xl text-gray-800 text-center py-24">Bookings Cart is empty</p></>
             }
             
         </Layout>

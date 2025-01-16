@@ -29,7 +29,7 @@ const Navbar = () => {
 
             
             <li>
-                <Link to={'/allproduct'}>All Product</Link>
+                <Link to={'/allproduct'}>All Rooms</Link>
             </li>
 
            
@@ -60,7 +60,7 @@ const Navbar = () => {
            
             <li>
                 <Link to={'/cart'}>
-                    Cart({cartItems.length})
+                    Bookings Cart({cartItems.length})
                 </Link>
             </li>
         </ul>
@@ -72,8 +72,9 @@ const Navbar = () => {
               
                 <div className="left py-3 lg:py-0">
                     <Link to={'/'}>
-                        <h2 className=" font-bold text-white text-2xl text-center">E-Commerce Firebase</h2>
+                        <h2 className=" font-bold text-white text-2xl text-center">Metro Stay</h2>
                     </Link>
+                    
                 </div>
 
                 

@@ -22,14 +22,14 @@ const HomePageProductCard = () => {
    
     const addCart = (item) => {
         dispatch(addToCart(item));
-        toast.success("Added to cart")
+        toast.success("Added to bookings")
     }
 
 
    
     const deleteCart = (item) => {
         dispatch(deleteFromCart(item));
-        toast.success("Delete cart")
+        toast.success("Deleted from bookings")
     }
 
     useEffect(() => {
@@ -40,7 +40,7 @@ const HomePageProductCard = () => {
         <div className="mt-14 bg-gray-50 py-4">
            
             <div className=" py-3">
-                <h1 className=" text-center  text-2xl font-semibold">Bestselling Products</h1>
+                <h1 className=" text-center  text-2xl font-semibold">Choose from Our Finest Room</h1>
             </div>
 
            
@@ -66,7 +66,7 @@ const HomePageProductCard = () => {
                                         />
                                         <div className="p-6">
                                             <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
-                                            E-Commerce Firebase
+                                            Metro Stay
                                             </h2>
                                             <h1 className="title-font text-lg font-medium text-gray-900 mb-3 capitalize">
                                                 {title.substring(0, 25)}
@@ -83,7 +83,7 @@ const HomePageProductCard = () => {
                                                         onClick={() => deleteCart(item)}
                                                         className=" bg-red-700 w-full text-white py-[4px] rounded-lg font-bold">
 
-                                                        Remove From Cart
+                                                        Remove From Bookings
                                                     </button>
 
                                                     :
@@ -91,7 +91,7 @@ const HomePageProductCard = () => {
                                                     <button
                                                         onClick={() => addCart(item)}
                                                         className=" bg-black  w-full text-white py-[4px] rounded-lg font-bold">
-                                                        Add To Cart
+                                                        Add To Bookings
                                                     </button>
 
                                                 }

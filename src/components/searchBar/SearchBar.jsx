@@ -10,7 +10,7 @@ const SearchBar = () => {
     const [search, setSearch] = useState("");
 
   
-    const filterSearchData = getAllProduct.filter((obj) => obj.title.toLowerCase().includes(search.toLowerCase())).slice(0, 8)
+    const filterSearchData = getAllProduct.filter((obj) => obj.location.toLowerCase().includes(search.toLowerCase())).slice(0, 8)
 
     const navigate = useNavigate();
 
@@ -32,12 +32,14 @@ const SearchBar = () => {
                     {filterSearchData.length > 0 ?
                         <>
                             {filterSearchData.map((item, index) => {
+                                console.log(item)
                                 return (
                                     <div key={index} className="py-2 px-2 cursor-pointer" onClick={() => navigate(`/productinfo/${item.id}`)}>
-                                        <div className="flex items-center gap-2 text-black capitalize">
-                                            <img className="w-10 text-black" src={item.productImageUrl} alt="" />
-                                            {item.title}
-                                        </div>
+                                        <div class="flex items-center gap-2 text-black capitalize">
+                                            <img class="w-10 text-black" src={item.productImageUrl} alt=""/>
+                                            <div class="flex flex-col mt-[-10px]">
+                                                <span class="relative mt-[-2px]">{item.title}</span>
+                                                <span class="absolute mt-4 text-gray-600 text-sm">{item.location}</span></div></div>
                                     </div>
                                 )
                             })}

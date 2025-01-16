@@ -8,28 +8,28 @@ import Loader from "../../components/loader/Loader";
 
 const categoryList = [
     {
-        name: 'fashion'
+        name: 'Cozy Single'
     },
     {
-        name: 'shirt'
+        name: 'Comfort Twin'
     },
     {
-        name: 'jacket'
+        name: 'Single Comfort A/C'
     },
     {
-        name: 'mobile'
+        name: 'Twin Comfort A/C'
     },
     {
-        name: 'laptop'
+        name: 'Premium Single Suite'
     },
     {
-        name: 'shoes'
+        name: 'Deluxe Twin Sharing'
     },
     {
-        name: 'home'
+        name: 'Studio Haven'
     },
     {
-        name: 'books'
+        name: 'Budget Friendly Single'
     }
 ]
 
@@ -49,6 +49,8 @@ const UpdateProductPage = () => {
         productImageUrl: "",
         category: "",
         description: "",
+        quantity : 1,
+        location:"",
         time: Timestamp.now(),
         date: new Date().toLocaleString(
             "en-US",
@@ -74,6 +76,7 @@ const UpdateProductPage = () => {
                 description: product?.description,
                 quantity : product?.quantity,
                 time: product?.time,
+                location:product?.location,
                 date: product?.date
             })
         } catch (error) {
@@ -87,7 +90,7 @@ const UpdateProductPage = () => {
         try {
 
             await setDoc(doc(fireDB, 'products', id), product)
-            toast.success("Product Updated successfully")
+            toast.success("Room Details Updated Successfully")
             getAllProductFunction();
             setLoading(false)
             navigate('/admin-dashboard')
@@ -111,7 +114,7 @@ const UpdateProductPage = () => {
                    
                     <div className="mb-5">
                         <h2 className='text-center text-2xl font-bold text-black '>
-                            Update Product
+                            Update Room Details
                         </h2>
                     </div>
 
@@ -127,7 +130,7 @@ const UpdateProductPage = () => {
                                     title: e.target.value
                                 })
                             }}
-                            placeholder='Product Title'
+                            placeholder='Hotel/PG Title'
                             className='bg-gray-50 border text-black border-gray-400 px-2 py-2 w-96 rounded-md outline-none placeholder-gray-600'
 
                         />
@@ -144,7 +147,8 @@ const UpdateProductPage = () => {
                                     price: e.target.value
                                 })
                             }}
-                            placeholder='Product Price'
+                            placeholder='Room Price'
+
                             className='bg-gray-50 border text-black border-gray-400 px-2 py-2 w-96 rounded-md outline-none placeholder-gray-600'
 
                         />
@@ -162,7 +166,7 @@ const UpdateProductPage = () => {
                                     productImageUrl: e.target.value
                                 })
                             }}
-                            placeholder='Product Image Url'
+                            placeholder='Room Image Url'
                                                    className='bg-gray-50 border text-black border-gray-400 px-2 py-2 w-96 rounded-md outline-none placeholder-gray-600'
 
                         />
@@ -180,7 +184,7 @@ const UpdateProductPage = () => {
                             }}
                             className='bg-gray-50 border text-black border-gray-400 px-2 py-2 w-96 rounded-md outline-none placeholder-gray-600'
 >
-                            <option disabled>Select Product Category</option>
+                            <option disabled value=''>Select Room Category</option>
                             {categoryList.map((value, index) => {
                                 const { name } = value
                                 return (
@@ -190,7 +194,22 @@ const UpdateProductPage = () => {
                         </select>
                     </div>
 
-                    
+                    <div className="mb-3">
+                        <input
+                            type="text"
+                            name="location"
+                            value={product.location}
+                            onChange={(e) => {
+                                setProduct({
+                                    ...product,
+                                    location: e.target.value
+                                })
+                            }}
+                            placeholder='Enter Location'
+                            className='bg-gray-50 border text-black border-gray-400 px-2 py-2 w-96 rounded-md outline-none placeholder-gray-600'
+
+                        />
+                    </div>
                     <div className="mb-3">
                         <textarea
                             value={product.description}
@@ -199,7 +218,9 @@ const UpdateProductPage = () => {
                                     ...product,
                                     description: e.target.value
                                 })
-                            }} name="description" placeholder="Product Description" rows="5"
+                            }} name="description" 
+                            placeholder="Room Description"
+                             rows="5"
                             className='bg-gray-50 border text-black border-gray-400 px-2 py-2 w-96 rounded-md outline-none placeholder-gray-600'
 
                              >
@@ -215,7 +236,7 @@ const UpdateProductPage = () => {
                             className='bg-black hover:bg-black hover:text-white w-full text-white text-center py-2 font-bold rounded-md '
 
                         >
-                            Update Product
+                            Update Details
                         </button>
                     </div>
                 </div>

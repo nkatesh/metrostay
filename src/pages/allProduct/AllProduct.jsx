@@ -20,12 +20,12 @@ const AllProduct = () => {
     const addCart = (item) => {
        
         dispatch(addToCart(item));
-        toast.success("Add to cart")
+        toast.success("Added to bookings")
     }
 
     const deleteCart = (item) => {
         dispatch(deleteFromCart(item));
-        toast.success("Delete cart")
+        toast.success("Deleted from bookings")
     }
 
   
@@ -38,7 +38,8 @@ const AllProduct = () => {
     <div className="py-8">
            
             <div className="">
-                <h1 className=" text-center mb-5 text-2xl font-semibold">All Products</h1>
+                <h1 className=" text-center mb-5 text-2xl font-semibold">Explore Our Comfortable Room Options
+                </h1>
             </div>
 
           
@@ -61,7 +62,7 @@ const AllProduct = () => {
                                         />
                                         <div className="p-6">
                                             <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
-                                            E-Commerce Firebase
+                                           Metro Stay
                                             </h2>
                                             <h1 className="title-font text-lg font-medium text-gray-900 mb-3">
                                                 {title.substring(0, 25)}
@@ -78,7 +79,7 @@ const AllProduct = () => {
                                                 <button
                                                     onClick={() => deleteCart(item)}
                                                     className=" bg-red-700  w-full text-white py-[4px] rounded-lg font-bold">
-                                                    Delete From Cart
+                                                    Delete From Bookings
                                                 </button>
 
                                                 : 
@@ -86,7 +87,7 @@ const AllProduct = () => {
                                                 <button
                                                     onClick={() => addCart(item)}
                                                     className=" bg-black w-full text-white py-[4px] rounded-lg font-bold">
-                                                    Add To Cart
+                                                    Add To Bookings
                                                 </button>
                                             }
                                             </div>
