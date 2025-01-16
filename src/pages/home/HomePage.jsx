@@ -9,6 +9,7 @@ const HomePage = () => {
     return (
         <Layout >
             <HeroSection/>
+            
             <Category/>
             <HomePageProductCard/>
           
