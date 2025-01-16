@@ -5,7 +5,7 @@ const OrderDetail = () => {
     const context = useContext(myContext);
     const { getAllOrder, orderDelete } = context;
     let globalIndex = 0;
-    // console.log(getAllOrder)
+    
     return (
         <div>
             <div>
